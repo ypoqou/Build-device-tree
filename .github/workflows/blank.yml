@@ -32,9 +32,11 @@ jobs:
     - name: Start build
       run: |
         python3 -m twrpdtgen -o dt/ *.img
+    
     - name: ZIP device tree
       run: |
         zip -r DeviceTree.zip ./dt
+    
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
       with:
@@ -44,4 +46,4 @@ jobs:
         tag_name: ${{ github.run_id }}
         body: DeviceTree for twrp
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
